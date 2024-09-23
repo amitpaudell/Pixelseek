@@ -46,9 +46,10 @@ form {
   max-width: 600px;
   margin: auto;
   height: 80px;
-  background: #434989;
+  background: #000000;
   display: flex;
   align-items: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 form input {
@@ -69,10 +70,12 @@ form input::placeholder {
 form button {
   padding: 0 40px;
   height: 100%;
-  background: #ff3929;
-  color: #fff;
+  background: #fff;
+  color: black;
+  font-weight: 500;
   font-size: 18px;
-  border: 0;
+  border: 2px solid black;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   outline: 0;
   display: block;
 }
@@ -90,6 +93,29 @@ form button {
   height: 230px;
   object-fit: cover;
   border-radius: 5px;
+}
+/* RESPONSIVE */
+
+/* Tablet layout */
+@media (max-width: 1024px) {
+  #search-result {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+/* Mobile layout */
+@media (max-width: 768px) {
+  #search-result {
+      grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 1024px) {
+
+  footer{
+    width: 100%;
+  }
+  .footer-section ul{
+    justify-content: space-around;
+  }
 }
 
 button#show-more-btn {
