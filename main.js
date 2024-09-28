@@ -2,22 +2,22 @@
 //Unsplash provide copyright free images that you can use  on the website
 const accessKey = "lN6YPpcvGOv40L9BgfuotGYQGyescsIJRe7v3K43A6k";
 
-const searchForm = document.getElementById("search-form");
-const searchBox = document.getElementById("search-box");
-const searchResult = document.getElementById("search-result");
-const showMoreBtn = document.getElementById("show-more-btn");
+const formSearch = document.getElementById("form-search");
+const inputSearch = document.getElementById("input-search");
+const imageContainer = document.getElementById("image-container");
+const loadMoreBtn = document.getElementById("load-more-btn");
 
 let keyword = "";
 let page = 1;
 
 async function searchImages() {
-  keyword = searchBox.value;
+  keyword = inputSearch.value;
   const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&client_id=${accessKey}&per_page=12`;
   const response = await fetch(url);
   const data = await response.json();
 
   if (page === 1) {
-    searchResult.innerHTML = "";
+    imageContainer.innerHTML = "";
   }
   const results = data.results;
 
@@ -29,19 +29,19 @@ async function searchImages() {
     imageLink.target = "_blank";
     //Placing image inside a tag
     imageLink.appendChild(image);
-    searchResult.appendChild(imageLink);
+    imageContainer.appendChild(imageLink);
   });
 
-  showMoreBtn.style.display = "block";
+  loadMoreBtn.style.display = "block";
 }
 
-searchForm.addEventListener("submit", (e) => {
+formSearch.addEventListener("submit", (e) => {
   e.preventDefault();
   page = 1;
   searchImages();
 });
 
-showMoreBtn.addEventListener("click", () => {
+loadMoreBtn.addEventListener("click", () => {
   page++;
   searchImages();
 });
